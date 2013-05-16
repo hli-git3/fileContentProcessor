@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,12 +15,12 @@ public class DuplicationRemover {
 	private static final Logger log = LoggerFactory
 			.getLogger(DuplicationRemover.class);
 
-	public Set<Integer> removeDuplicateInteger(String fileName) {
+	public List<Integer> removeDuplicateInteger(String fileName) {
 		if (fileName == null || fileName.trim().isEmpty()) {
 			return null;
 		}
 
-		Set<Integer> result = new HashSet<Integer>();
+		List<Integer> result = new ArrayList<Integer>();
 
 		BufferedReader in = null;
 		String tempString = null;
@@ -30,7 +30,10 @@ public class DuplicationRemover {
 			while ((tempString = in.readLine()) != null) {
 				tempString = tempString.trim();
 				if(!tempString.isEmpty()) {
-					result.add(Integer.parseInt(tempString));
+					Integer intTemp = Integer.parseInt(tempString);
+					if(!result.contains(intTemp)) {
+						result.add(intTemp);
+					}
 				}
 			}
 

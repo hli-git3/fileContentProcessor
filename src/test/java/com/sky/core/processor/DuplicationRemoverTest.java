@@ -43,13 +43,13 @@ public class DuplicationRemoverTest {
 	 */
 	@Test
 	public void testRemoveDuplicateInteger() {
-		Set<Integer> set = processor.removeDuplicateInteger("src/test/resources/testFile1.txt");
+		List<Integer> set = processor.removeDuplicateInteger("src/test/resources/testFile1.txt");
 		assertEquals(4, set.size());
 	}
 
 	@Test
 	public void testRemoveDuplicateInteger2() {
-		Set<Integer> set = processor.removeDuplicateInteger("src/test/resources/testFile2.txt");
+		List<Integer> set = processor.removeDuplicateInteger("src/test/resources/testFile2.txt");
 		assertEquals(11, set.size());
 	}
 	
